@@ -19,7 +19,7 @@ def escape_special_codes(raw_codes):
     FESC is then sent as FESC, TFESC."
     - http://en.wikipedia.org/wiki/KISS_(TNC)#Description
     """
-    return raw_codes.replace(
+    return raw_codes.encode('utf-8').replace(
         kiss.FESC,
         kiss.FESC_TFESC
     ).replace(
@@ -37,7 +37,7 @@ def recover_special_codes(escaped_codes):
     replaced by FESC code and FESC_TFEND is replaced by FEND code."
     - http://en.wikipedia.org/wiki/KISS_(TNC)#Description
     """
-    return escaped_codes.replace(
+    return escaped_codes.encode('utf-8').replace(
         kiss.FESC_TFESC,
         kiss.FESC
     ).replace(
